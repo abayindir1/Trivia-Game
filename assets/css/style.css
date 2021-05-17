@@ -1,0 +1,57 @@
+body{
+    background-color: #333333;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Nova Round', cursive;;
+}
+
+.home-container{
+    width: 100%;
+    /* text-align: center; */
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#home-title{
+    color: #eeeeee;
+    font-size: 3rem;
+    margin-bottom: 40px;
+}
+
+.btn{
+    padding: 1%;
+    border: 5px double #ff5722;
+    border-radius: 10px;
+    font-size: 30px;
+    color: #eeeeee;
+}
+
+.start-btn{
+    text-decoration: none;
+}
+
+.btn:hover{
+    transition: 1s;
+    background-color: #ff5722;
+    color: #303841;
+}
+
+/* ------- */
+span{
+    color: #ff5722;
+}
+
+.correct{
+    background-color: green;
+}
+.wrong{
+    background-color: red;
+}

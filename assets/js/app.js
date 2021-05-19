@@ -133,6 +133,7 @@ $(document).ready(function () {
     timer--;
     $("#timer").text(`Timer: ${timer}`);
     if (timer === 0) {
+      alert("Time up!")
       clearInterval(intervalId);
       clearQuestion();
       nextQuestion();
@@ -141,7 +142,8 @@ $(document).ready(function () {
 
   function pickAnswer() {
     $(".option").click(function (e) {
-      console.log(e.target.getAttribute("val"));
+      $(".option").css("pointer-events", "none")
+      clearInterval(intervalId)
       if (e.target.getAttribute("val") === "true") {
         $(e.target).addClass("correct");
         score++;
@@ -173,12 +175,13 @@ $(document).ready(function () {
 
   function nextQuestion() {
     if (count === questions.length - 1) {
-      // alert("Game ova");
+      alert("Game ova");
       score = 0;
     } else {
       count++;
       timer = 15;
       displayQuestion();
+      $(".option").css("pointer-events", "auto")
     }
   }
 

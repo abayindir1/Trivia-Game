@@ -43,15 +43,3 @@ body{
     background-color: #ff5722;
     color: #303841;
 }
-
-/* ------- */
-span{
-    color: #ff5722;
-}
-
-.correct{
-    background-color: green;
-}
-.wrong{
-    background-color: red;
-}

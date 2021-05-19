@@ -104,7 +104,7 @@ $(document).ready(function () {
   var intervalId;
 
   function displayHud() {
-    $(".hud").append(`<h3 id="timer">Timer: ${timer}</h3>`);
+    $(".hud").append(`<h3 id="timer">Timer: ${timer} </h3>`);
     $(".hud").append(`<h3 id="score">Score: ${score}</h3>`);
   }
 
@@ -125,7 +125,7 @@ $(document).ready(function () {
       `<p class="option" val="${questions[count].options.d[1]}">D) ${questions[count].options.d[0]}</p>`
     );
 
-    // intervalId = setInterval(decrement, 1000);
+    intervalId = setInterval(decrement, 1000);
     pickAnswer();
   }
 
@@ -166,6 +166,8 @@ $(document).ready(function () {
           }
         }, 3000);
       }
+
+      // showModal("Buuuum")
     });
   }
 
@@ -184,6 +186,12 @@ $(document).ready(function () {
       $(".option").css("pointer-events", "auto")
     }
   }
+
+  // function showModal(message){
+  //   $(".modal-content").append(
+  //     `<h1>${message}</h1>`
+  //   )
+  // }
 
   displayQuestion();
 });

@@ -4,7 +4,46 @@ span {
 
 .correct {
   background-color: green;
+  border: 5px double black;
+  transition: 0.5s;
 }
 .wrong {
   background-color: red;
+  border: 5px double black;
+  transition: 0.5s;
+}
+
+.game-container {
+  width: 50vw;
+  height: 90vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.game {
+  width: 100%;
+}
+
+.question {
+  font-size: 2rem;
+  color: #ff5722;
+  margin: 10px 0 10px 0;
+}
+
+.option {
+  font-size: 2rem;
+  margin: 1%;
+  padding: 1%;
+}
+
+.hud{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#timer{
+  margin: 0 10px 0 10px;
+  padding: 0 10px;
+  border-right: 3px solid #ff5722;
 }

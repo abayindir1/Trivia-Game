@@ -125,7 +125,7 @@ $(document).ready(function () {
       `<p class="option" val="${questions[count].options.d[1]}">D) ${questions[count].options.d[0]}</p>`
     );
 
-    intervalId = setInterval(decrement, 1000);
+    // intervalId = setInterval(decrement, 1000);
     pickAnswer();
   }
 
@@ -133,7 +133,7 @@ $(document).ready(function () {
     timer--;
     $("#timer").text(`Timer: ${timer}`);
     if (timer === 0) {
-      alert("Time up!")
+      alert("Time up!");
       clearInterval(intervalId);
       clearQuestion();
       nextQuestion();
@@ -142,14 +142,18 @@ $(document).ready(function () {
 
   function pickAnswer() {
     $(".option").click(function (e) {
-      $(".option").css("pointer-events", "none")
-      clearInterval(intervalId)
+      $(".option").css("pointer-events", "none");
+      clearInterval(intervalId);
       if (e.target.getAttribute("val") === "true") {
         $(e.target).addClass("correct");
         score++;
         setTimeout(function () {
           if (count === questions.length - 1) {
-            alert("Your score is " + score);
+            if (score > 2) {
+              finalScreen("You did well!", score);
+            } else {
+              finalScreen("You didn't do so well!", score);
+            }
           } else {
             clearQuestion();
             nextQuestion();
@@ -159,15 +163,17 @@ $(document).ready(function () {
         $(e.target).addClass("wrong");
         setTimeout(function () {
           if (count === questions.length - 1) {
-            alert("Your score is " + score);
+            if (score > 2) {
+              finalScreen("You did well!", score);
+            } else {
+              finalScreen("You didn't do so well! Try Again.", score);
+            }
           } else {
             clearQuestion();
             nextQuestion();
           }
         }, 3000);
       }
-
-      // showModal("Buuuum")
     });
   }
 
@@ -183,15 +189,22 @@ $(document).ready(function () {
       count++;
       timer = 15;
       displayQuestion();
-      $(".option").css("pointer-events", "auto")
+      $(".option").css("pointer-events", "auto");
     }
   }
 
-  // function showModal(message){
-  //   $(".modal-content").append(
-  //     `<h1>${message}</h1>`
-  //   )
-  // }
+  function finalScreen(message, score) {
+    $(".game-container").empty();
+    $(".game-container").append(`<div class="final-screen">
+    <span><h1 id="final-header">Your final score is ${score}</h1></span>
+    <hr>
+    </div>`);
+
+    $(".final-screen").append(`<h3 id="final-message">${message}</h3>`);
+    $(".final-screen").append(
+      `<button class="btn restart-btn" onClick="${() =>console.log("bum")}">Restart</button>`
+    );
+  }
 
   displayQuestion();
 });

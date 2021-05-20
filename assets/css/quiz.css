@@ -35,6 +35,7 @@ span {
   font-size: 2rem;
   margin: 1%;
   padding: 1%;
+  cursor: pointer;
 }
 
 .hud{
@@ -46,4 +47,26 @@ span {
   margin: 0 10px 0 10px;
   padding: 0 10px;
   border-right: 3px solid #ff5722;
+}
+
+.restart-btn{
+  color: #ff5722;
+  background-color: #333333;
+}
+
+.final-screen{
+  padding: 3%;
+  border: 3px double #ff5722;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#final-header{
+  font-size: 2.75rem;
+  margin-bottom: 2%
+}
+
+#final-message{
+  font-size: 2.25rem;
+  margin: 2% 0 2% 0;
 }

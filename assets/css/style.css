@@ -32,6 +32,7 @@ body{
     border-radius: 10px;
     font-size: 30px;
     color: #eeeeee;
+    cursor: pointer;
 }
 
 .start-btn{

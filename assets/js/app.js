@@ -153,7 +153,7 @@ $(document).ready(function () {
         score++;
         setTimeout(function () {
           if (count === questions.length - 1) {
-            if (score > 2) {
+            if (score > 5) {
               finalScreen("You did well!", score);
             } else {
               finalScreen("You didn't do so well!", score);
@@ -167,7 +167,7 @@ $(document).ready(function () {
         $(e.target).addClass("wrong");
         setTimeout(function () {
           if (count === questions.length - 1) {
-            if (score > 2) {
+            if (score > 5) {
               finalScreen("You did well!", score);
             } else {
               finalScreen("You didn't do so well! Try Again.", score);

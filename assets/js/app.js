@@ -202,9 +202,13 @@ $(document).ready(function () {
 
     $(".final-screen").append(`<h3 id="final-message">${message}</h3>`);
     $(".final-screen").append(
-      `<button class="btn restart-btn" onClick="${() =>console.log("bum")}">Restart</button>`
+      `<button class="btn restart-btn">Restart</button>`
     );
+    $(".restart-btn").click(function(){
+      location.reload()
+    })
   }
+
 
   displayQuestion();
 });

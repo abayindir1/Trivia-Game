@@ -29,73 +29,73 @@ $(document).ready(function () {
         d: ["Court", false],
       },
     },
-    // {
-    //   question: "What was the fastest goal in World Cup history?",
-    //   options: {
-    //     a: ["13.4 seconds", false],
-    //     b: ["20 seconds", false],
-    //     c: ["6.3 seconds", false],
-    //     d: ["10.8 seconds", true],
-    //   },
-    // },
-    // {
-    //   question: "Which country won the first women's World Cup?",
-    //   options: {
-    //     a: ["England", false],
-    //     b: ["Brazil", false],
-    //     c: ["Norway", false],
-    //     d: ["United States", true],
-    //   },
-    // },
-    // {
-    //   question:
-    //     "Which two countries went to war partially over a soccer match?",
-    //   options: {
-    //     a: ["England-Ireland", false],
-    //     b: ["Sudan-Egypt", false],
-    //     c: ["Turkey-Bulgaria", false],
-    //     d: ["El Salvador-Honduras", true],
-    //   },
-    // },
-    // {
-    //   question:
-    //     "Premier League club Manchester United is also known by which nickname?",
-    //   options: {
-    //     a: ["The Gunners", false],
-    //     b: ["The Red Devils", true],
-    //     c: ["The Foxes", false],
-    //     d: ["The Scousers", false],
-    //   },
-    // },
-    // {
-    //   question:
-    //     "Who is the only soccer player in history to win five FIFA Ballons d'Or?",
-    //   options: {
-    //     a: ["Lionel Messi", true],
-    //     b: ["Luka Modric", false],
-    //     c: ["Christiano Ronaldo", false],
-    //     d: ["Diego Maradona", false],
-    //   },
-    // },
-    // {
-    //   question:
-    //     "Who was the first English player to win league titles in four countries?",
-    //   options: {
-    //     a: ["Wayne Rooney", false],
-    //     b: ["Steven Gerrard", false],
-    //     c: ["David Beckham", true],
-    //     d: ["Frank Lampard", false],
-    //   },
-    // },
-    // {
-    //   question: "What country was home to the world's first soccer league?",
-    //   options: {
-    //     a: ["Scotland", false],
-    //     b: ["Germany", false],
-    //     c: ["England", true],
-    //     d: ["Brazil", false],
-    //   },
-    // },
+    {
+      question: "What was the fastest goal in World Cup history?",
+      options: {
+        a: ["13.4 seconds", false],
+        b: ["20 seconds", false],
+        c: ["6.3 seconds", false],
+        d: ["10.8 seconds", true],
+      },
+    },
+    {
+      question: "Which country won the first women's World Cup?",
+      options: {
+        a: ["England", false],
+        b: ["Brazil", false],
+        c: ["Norway", false],
+        d: ["United States", true],
+      },
+    },
+    {
+      question:
+        "Which two countries went to war partially over a soccer match?",
+      options: {
+        a: ["England-Ireland", false],
+        b: ["Sudan-Egypt", false],
+        c: ["Turkey-Bulgaria", false],
+        d: ["El Salvador-Honduras", true],
+      },
+    },
+    {
+      question:
+        "Premier League club Manchester United is also known by which nickname?",
+      options: {
+        a: ["The Gunners", false],
+        b: ["The Red Devils", true],
+        c: ["The Foxes", false],
+        d: ["The Scousers", false],
+      },
+    },
+    {
+      question:
+        "Who is the only soccer player in history to win five FIFA Ballons d'Or?",
+      options: {
+        a: ["Lionel Messi", true],
+        b: ["Luka Modric", false],
+        c: ["Christiano Ronaldo", false],
+        d: ["Diego Maradona", false],
+      },
+    },
+    {
+      question:
+        "Who was the first English player to win league titles in four countries?",
+      options: {
+        a: ["Wayne Rooney", false],
+        b: ["Steven Gerrard", false],
+        c: ["David Beckham", true],
+        d: ["Frank Lampard", false],
+      },
+    },
+    {
+      question: "What country was home to the world's first soccer league?",
+      options: {
+        a: ["Scotland", false],
+        b: ["Germany", false],
+        c: ["England", true],
+        d: ["Brazil", false],
+      },
+    },
   ];
 
   var count = 0;
@@ -125,18 +125,22 @@ $(document).ready(function () {
       `<p class="option" val="${questions[count].options.d[1]}">D) ${questions[count].options.d[0]}</p>`
     );
 
-    // intervalId = setInterval(decrement, 1000);
+    intervalId = setInterval(decrement, 1000);
     pickAnswer();
   }
 
   function decrement() {
     timer--;
     $("#timer").text(`Timer: ${timer}`);
+    if (timer <= 5) {
+      $("#timer").css("color", "yellow");
+    }
     if (timer === 0) {
-      alert("Time up!");
+      $("#timer").css("color", "red");
       clearInterval(intervalId);
-      clearQuestion();
-      nextQuestion();
+      setTimeout(function () {
+        nextQuestion();
+      }, 3000);
     }
   }
 
@@ -182,8 +186,8 @@ $(document).ready(function () {
   }
 
   function nextQuestion() {
+    clearQuestion();
     if (count === questions.length - 1) {
-      alert("Game ova");
       score = 0;
     } else {
       count++;
@@ -204,11 +208,10 @@ $(document).ready(function () {
     $(".final-screen").append(
       `<button class="btn restart-btn">Restart</button>`
     );
-    $(".restart-btn").click(function(){
-      location.reload()
-    })
+    $(".restart-btn").click(function () {
+      location.reload();
+    });
   }
-
 
   displayQuestion();
 });
